@@ -26,6 +26,6 @@ flatpak remote-add --if-not-exists flathub \
   https://dl.flathub.org/repo/flathub.flatpakrepo
 
 echo ">>> Installerer flatpak-apps fra flatpak-apps.txt..."
-xargs -a "$SCRIPT_DIR/flatpak-apps.txt" flatpak install -y flathub
+xargs -a "$SCRIPT_DIR/flatpak-apps.txt" flatpak install --system -y flathub
 
 echo ">>> Færdig! Genstart evt. maskinen, så flatpak-integration er klar."
