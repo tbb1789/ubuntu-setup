@@ -1,0 +1,7 @@
+com.brave.Browser
+com.protonvpn.www
+com.visualstudio.code
+md.obsidian.Obsidian
+me.proton.Mail
+me.proton.Pass
+org.videolan.VLC
