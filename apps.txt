@@ -7,3 +7,4 @@ steam-installer
 unzip
 neofetch
 ubuntu-restricted-extras
+virt-manager
