@@ -5,4 +5,5 @@ gnome-tweaks
 htop
 steam
 code
+steam-installer
 
