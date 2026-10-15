@@ -4,7 +4,6 @@ com.visualstudio.code
 md.obsidian.Obsidian
 me.proton.Mail
 me.proton.Pass
-org.videolan.VLC
 com.discordapp.Discord
 com.usebottles.bottles
 com.github.tchx84.Flatseal
