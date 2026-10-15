@@ -4,4 +4,6 @@ vlc
 gnome-tweaks
 htop
 steam-installer
-
+unzip
+neofetch
+ubuntu-restricted-extras
