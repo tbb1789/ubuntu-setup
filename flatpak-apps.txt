@@ -8,3 +8,5 @@ org.videolan.VLC
 com.discordapp.Discord
 com.usebottles.bottles
 com.github.tchx84.Flatseal
+com.mattjakeman.ExtensionManager
+io.github.kolunmi.Bazaar
