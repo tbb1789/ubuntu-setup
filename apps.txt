@@ -8,3 +8,5 @@ unzip
 neofetch
 ubuntu-restricted-extras
 virt-manager
+gnome-tweaks
+gnome-shell-extensions
