@@ -47,9 +47,28 @@ flatpak remote-add --if-not-exists --system flathub \
 
 ### FASE 2: APPS ###
 echo ">>> Installerer apps fra apps.txt..."
-xargs -a "$SCRIPT_DIR/apps.txt" apt install -y
+missing=()
+while read -r pkg; do
+  [[ -z "${pkg// }" || "$pkg" == \#* ]] && continue   # spring tomme linjer/kommentarer over
+  apt install -y "$pkg" || missing+=("$pkg")
+done < "$SCRIPT_DIR/apps.txt"
+
+if [[ ${#missing[@]} -gt 0 ]]; then
+  echo "    ADVARSEL: Disse pakker kunne ikke installeres: ${missing[*]}"
+fi
 
 echo ">>> Installerer flatpak-apps fra flatpak-apps.txt..."
 xargs -a "$SCRIPT_DIR/flatpak-apps.txt" flatpak install --system -y flathub
+
+echo ">>> Opsætter virtualisering (virt-manager)..."
+systemctl enable --now libvirtd
+if [[ -z "${SUDO_USER:-}" ]]; then
+  echo "    ADVARSEL: Kør med 'sudo ./ubuntu-setup.sh' – springer gruppe-tilmelding over"
+else
+  usermod -aG libvirt,kvm "$SUDO_USER"
+  echo "    $SUDO_USER tilføjet til libvirt+kvm (log ud/ind for at aktivere)"
+fi
+virsh net-start default 2>/dev/null || true
+virsh net-autostart default 2>/dev/null || true
 
 echo ">>> Færdig! Genstart maskinen, så eventuelle driver-opdateringer aktiveres."
